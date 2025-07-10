@@ -100,7 +100,7 @@ class Sentiment:
         text = "it is too short"
         assert self.custom_text_prediction(text) == "legalabb 6 szo hosszu kommentet irj"
 
-    def main(self):
+def main():
         parser = argparse.ArgumentParser(description="Sentiment analysis app")
 
         parser.add_argument('-data', '-d', action="store_true", default=False)
@@ -110,27 +110,28 @@ class Sentiment:
 
         args = parser.parse_args()
 
-        if args.data:
-            print(self.train_data)
-        if args.strongest == "pozitiv":
-            print(self.strongest_features("pozitiv"))
-        elif args.strongest == "neutralis":
-            print(self.strongest_features("neutralis"))
-        elif args.strongest == "negativ":
-            print(self.strongest_features("negativ"))
-        if args.acc:
-            print(self.acc_score())
-        if args.classification:
-            print(self.classification_report())
+        sentiment = Sentiment()
 
-        self.test_label_column()
-        self.test_acc_score()
-        self.test_strongest_features()
-        self.test_custom_text_prediction()
+        if args.data:
+            print(sentiment.train_data)
+        if args.strongest == "pozitiv":
+            print(sentiment.strongest_features("pozitiv"))
+        elif args.strongest == "neutralis":
+            print(sentiment.strongest_features("neutralis"))
+        elif args.strongest == "negativ":
+            print(sentiment.strongest_features("negativ"))
+        if args.acc:
+            print(sentiment.acc_score())
+        if args.classification:
+            print(sentiment.classification_report())
+
+        sentiment.test_label_column()
+        sentiment.test_acc_score()
+        sentiment.test_strongest_features()
+        sentiment.test_custom_text_prediction()
 
 if __name__ == '__main__':
-    sentiment = Sentiment()
-    sentiment.main()
+    main()
 
 
 
