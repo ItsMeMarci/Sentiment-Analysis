@@ -39,9 +39,9 @@ class Sentiment:
         return features, test_features
 
     def acc_score_dummy(self):
-        dummy_clf = DummyClassifier(strategy="most_frequent")  # tanító adatbázis leggyakoribb osztálya lesz mindig a predikció
-        dummy_clf.fit(self.count_vectorizer()[0], self.train_data.label)  # ugyanazon a tanító adatbázison "tanítjuk"
-        baseline_prediction = dummy_clf.predict(self.count_vectorizer()[1])  # predikció a kiértékelő adatbázison
+        dummy_clf = DummyClassifier(strategy="most_frequent")
+        dummy_clf.fit(self.count_vectorizer()[0], self.train_data.label)
+        baseline_prediction = dummy_clf.predict(self.count_vectorizer()[1]) 
         accuracy_score(baseline_prediction, self.test_data.label)
 
     def acc_score_bow(self):
@@ -183,6 +183,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
